@@ -11,7 +11,8 @@ import {
   získatKategorii, 
   získatProduktyPodleKategorie, 
   získatRodičovskouKategorii,
-  produkty 
+  produkty,
+  kategorie 
 } from "@/lib/data";
 import { 
   CheckCircle2, 
@@ -23,6 +24,26 @@ import {
   ArrowRight,
   ShoppingCart
 } from "lucide-react";
+
+// 🔧 Generuje statické parametry pro všechny kategorie při buildu
+export async function generateStaticParams() {
+  // 📋 Získáme všechny kategorie včetně podkategorií pro statický export
+  const parametry: { id: string }[] = [];
+  
+  kategorie.forEach(kat => {
+    // 🏷️ Přidáme hlavní kategorii
+    parametry.push({ id: kat.id });
+    
+    // 👶 Přidáme i všechny podkategorie
+    if (kat.children) {
+      kat.children.forEach(podkategorie => {
+        parametry.push({ id: podkategorie.id });
+      });
+    }
+  });
+  
+  return parametry;
+}
 
 // 🏷️ Stránka kategorie - zobrazuje produkty v kategorii
 export default function StrankaKategorie({ params }: { params: { id: string } }) {

@@ -11,6 +11,14 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { získatProdukt, produkty, kategorie } from "@/lib/data";
 import { CheckCircle2, XCircle, ShoppingCart, ArrowLeft, Package, Truck, Shield, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
 
+// 🔧 Generuje statické parametry pro všechny produkty při buildu  
+export async function generateStaticParams() {
+  // 📦 Vrátíme ID všech produktů pro statický export
+  return produkty.map(produkt => ({
+    id: produkt.id
+  }));
+}
+
 // 🛍️ Detail produktu - zobrazuje veškeré informace o produktu
 export default function DetailProduktu({ params }: { params: { id: string } }) {
   const produkt = získatProdukt(params.id); // 🔎 Načtení produktu podle ID
