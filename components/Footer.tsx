@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 // Patička stránky s kontakty a informacemi
@@ -6,40 +5,13 @@ export default function Footer() {
   return (
     <footer className="border-t bg-muted/50">
       <div className="container px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* O firmě */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* O firmě - informace o společnosti 🏢 */}
           <div className="space-y-4">
             <h3 className="text-lg font-bold">Kamenictví Dvořák s.r.o.</h3>
             <p className="text-sm text-muted-foreground">
               Tradiční řemeslo, moderní přístup, individuální řešení.
             </p>
-          </div>
-
-          {/* Rychlé odkazy */}
-          <div className="space-y-4">
-            <h4 className="font-semibold">Rychlé odkazy</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Hlavní stránka
-                </Link>
-              </li>
-              <li>
-                <Link href="/#kategorie" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Kategorie
-                </Link>
-              </li>
-              <li>
-                <Link href="/o-nas" className="text-muted-foreground hover:text-foreground transition-colors">
-                  O nás
-                </Link>
-              </li>
-              <li>
-                <Link href="/kontakt" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Kontakt
-                </Link>
-              </li>
-            </ul>
           </div>
 
           {/* Kontakt */}
@@ -104,8 +76,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
+        {/* Copyright - autorská práva 📝 */}
+        <div className="mt-8 pt-4 border-t text-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Kamenictví Dvořák s.r.o. Všechna práva vyhrazena.</p>
         </div>
       </div>

@@ -81,28 +81,28 @@ export default function HomePage() {
           {/* 🏷️ Premium grid všech kategorií */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {kategorie
-              .filter(kategorie => !kategorie.parent) // 👆 Pouze hlavní kategorie bez rodiče
-              .map((kategorie, index) => (
-              <Link key={kategorie.id} href={`/kategorie/${kategorie.id}`} className="group">
+              .filter(kat => !kat.parent) // 👆 Pouze hlavní kategorie bez rodiče
+              .map((kat, index) => (
+              <Link key={kat.id} href={`/kategorie/${kat.id}`} className="group">
                 <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 h-full border border-slate-200 bg-white/90 backdrop-blur-sm group-hover:bg-white transform group-hover:-translate-y-3 group-hover:border-slate-300">
                   <div className="relative h-72 overflow-hidden">
                     <Image
-                      src={kategorie.obrázek}
-                      alt={kategorie.název}
+                      src={kat.obrázek}
+                      alt={kat.název}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     
                     {/* 🎨 Ikona kategorie v rohu */}
                     <div className="absolute top-3 right-3 bg-gradient-to-r from-slate-700 to-slate-800 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl shadow-lg">
-                      {kategorie.ikona}
+                      {kat.ikona}
                     </div>
                     
                     {/* 🌟 Badge počtu podkategorií */}
-                    {kategorie.children && kategorie.children.length > 0 && (
+                    {kat.children && kat.children.length > 0 && (
                       <div className="absolute top-3 left-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
                         <Package className="h-3 w-3" />
-                        {kategorie.children.length} podkategorií
+                        {kat.children.length} podkategorií
                       </div>
                     )}
                     
@@ -111,20 +111,20 @@ export default function HomePage() {
                   <CardHeader className="p-6">
                     <div className="space-y-3 mb-3">
                       <CardTitle className="group-hover:text-slate-600 transition-colors duration-300 line-clamp-2 text-lg font-heading">
-                        {kategorie.název}
+                        {kat.název}
                       </CardTitle>
                     </div>
                     
                     <CardDescription className="line-clamp-3 text-slate-600 leading-relaxed mb-4">
-                      {kategorie.popis}
+                      {kat.popis}
                     </CardDescription>
 
                     {/* 📋 Seznam podkategorií (pokud existují) */}
-                    {kategorie.children && kategorie.children.length > 0 && (
+                    {kat.children && kat.children.length > 0 && (
                       <div className="mb-4 space-y-1">
                         <p className="text-xs font-semibold text-slate-800 mb-2">Podkategorie:</p>
                         <div className="flex flex-wrap gap-1">
-                          {kategorie.children.slice(0, 3).map((podkategorie) => (
+                          {kat.children.slice(0, 3).map((podkategorie) => (
                             <Badge 
                               key={podkategorie.id} 
                               variant="outline" 
@@ -136,9 +136,9 @@ export default function HomePage() {
                               }
                             </Badge>
                           ))}
-                          {kategorie.children.length > 3 && (
+                          {kat.children.length > 3 && (
                             <Badge variant="outline" className="text-xs bg-slate-50 text-slate-500">
-                              +{kategorie.children.length - 3} dalších
+                              +{kat.children.length - 3} dalších
                             </Badge>
                           )}
                         </div>

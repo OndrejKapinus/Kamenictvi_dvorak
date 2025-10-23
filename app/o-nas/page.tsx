@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 
 // Stránka O nás s pěkným designem a fotografií
 export default function ONásPage() {
@@ -34,15 +33,13 @@ export default function ONásPage() {
         
         <div className="container px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
-            <Link href="/" className="inline-flex items-center text-sm text-stone-600 hover:text-stone-800 mb-8 transition-colors bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Zpět na hlavní stránku
-            </Link>
-            
             <div className="space-y-4">
               <h1 className="text-4xl md:text-6xl font-heading font-bold tracking-tight text-stone-900 drop-shadow-sm">
                 O nás
               </h1>
+              <p className="text-xl md:text-2xl text-stone-700 font-medium">
+                Tradiční řemeslo, moderní přístup, individuální řešení
+              </p>
             </div>
           </div>
         </div>
@@ -52,32 +49,56 @@ export default function ONásPage() {
       <section className="py-16 md:py-24 bg-gradient-to-b from-white to-stone-50">
         <div className="container px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="prose prose-xl max-w-none space-y-8">
-              <p className="text-xl leading-relaxed text-slate-700">
-                Vítejte na e-shopu Kamenictví Dvořák s.r.o., kde se snoubí dlouholetá rodinná tradice, poctivá ruční práce a moderní technologie. Naše kamenictví má sídlo v malebné Telči a na trhu působíme již řadu let. Díky bohatým zkušenostem a lásce k řemeslu nabízíme zákazníkům prvotřídní kamenické služby a produkty, které vynikají kvalitou, precizností i estetickým zpracováním.
-              </p>
+            <div className="space-y-8 text-center">
+              <div className="space-y-6">
+                <p className="text-lg md:text-xl leading-relaxed text-slate-700 max-w-3xl mx-auto">
+                  Vítejte na e-shopu Kamenictví Dvořák s.r.o., kde se snoubí dlouholetá rodinná tradice, poctivá ruční práce a moderní technologie.
+                </p>
+                
+                <p className="text-lg md:text-xl leading-relaxed text-slate-700 max-w-3xl mx-auto">
+                  Naše kamenictví má sídlo v malebné <strong>Telči</strong> a na trhu působíme již řadu let. Díky bohatým zkušenostem a lásce k řemeslu nabízíme zákazníkům prvotřídní kamenické služby a produkty, které vynikají kvalitou, precizností i estetickým zpracováním.
+                </p>
+              </div>
               
-              <p className="text-xl leading-relaxed text-slate-700">
-                Specializujeme se na výrobu a prodej širokého sortimentu kamenických výrobků – od klasických pomníků, hřbitovních doplňků a urnových schránek, přes kamenné obklady, pracovní a kuchyňské desky, až po grilovací kameny, dekorační prvky a originální dárky ze žuly a dalších přírodních materiálů. Naše výrobky jsou vhodné jak pro exteriér, tak i interiér, a vyznačují se dlouhou životností i nadčasovým vzhledem.
-              </p>
+              <div className="space-y-6">
+                <p className="text-lg md:text-xl leading-relaxed text-slate-700 max-w-3xl mx-auto">
+                  Specializujeme se na výrobu a prodej širokého sortimentu kamenických výrobků – od klasických pomníků, hřbitovních doplňků a urnových schránek, přes kamenné obklady, pracovní a kuchyňské desky, až po grilovací kameny, dekorační prvky a originální dárky ze žuly a dalších přírodních materiálů.
+                </p>
+                
+                <p className="text-lg md:text-xl leading-relaxed text-slate-700 max-w-3xl mx-auto">
+                  Naše výrobky jsou vhodné jak pro exteriér, tak i interiér, a vyznačují se dlouhou životností i nadčasovým vzhledem.
+                </p>
+              </div>
               
-              <p className="text-xl leading-relaxed text-slate-700">
-                Velký důraz klademe na individuální přístup ke každému zákazníkovi. Ať už si vyberete z naší standardní nabídky, nebo máte zájem o zakázkovou výrobu dle vlastních představ, vždy se můžete spolehnout na naši vstřícnost, odborné poradenství a rychlé dodací lhůty. Rádi vám pomůžeme s výběrem materiálu, navrhneme řešení na míru a připravíme grafický návrh, aby byl výsledek přesně podle vašich přání.
-              </p>
+              <div className="space-y-6">
+                <p className="text-lg md:text-xl leading-relaxed text-slate-700 max-w-3xl mx-auto">
+                  Velký důraz klademe na <strong>individuální přístup</strong> ke každému zákazníkovi. Ať už si vyberete z naší standardní nabídky, nebo máte zájem o zakázkovou výrobu dle vlastních představ, vždy se můžete spolehnout na naši vstřícnost, odborné poradenství a rychlé dodací lhůty.
+                </p>
+                
+                <p className="text-lg md:text-xl leading-relaxed text-slate-700 max-w-3xl mx-auto">
+                  Rádi vám pomůžeme s výběrem materiálu, navrhneme řešení na míru a připravíme grafický návrh, aby byl výsledek přesně podle vašich přání.
+                </p>
+              </div>
               
-              <p className="text-xl leading-relaxed text-slate-700">
-                Klademe důraz na kvalitu zpracování a poctivou ruční práci, která je zárukou špičkového výsledku. Každý výrobek prochází pečlivou kontrolou a je vyráběn s maximální pečlivostí, abychom naplnili vaše očekávání a přání.
-              </p>
+              <div className="space-y-6">
+                <p className="text-lg md:text-xl leading-relaxed text-slate-700 max-w-3xl mx-auto">
+                  Klademe důraz na <strong>kvalitu zpracování</strong> a <strong>poctivou ruční práci</strong>, která je zárukou špičkového výsledku. Každý výrobek prochází pečlivou kontrolou a je vyráběn s maximální pečlivostí, abychom naplnili vaše očekávání a přání.
+                </p>
+                
+                <p className="text-lg md:text-xl leading-relaxed text-slate-700 max-w-3xl mx-auto">
+                  Věříme, že v naší nabídce najdete přesně to, co hledáte. V případě jakýchkoliv dotazů či speciálních požadavků nás neváhejte kontaktovat prostřednictvím e-mailu, telefonu nebo kontaktního formuláře.
+                </p>
+                
+                <p className="text-lg md:text-xl leading-relaxed text-slate-700 max-w-3xl mx-auto font-medium">
+                  Těšíme se na vaši návštěvu a budoucí spolupráci!
+                </p>
+              </div>
               
-              <p className="text-xl leading-relaxed text-slate-700">
-                Věříme, že v naší nabídce najdete přesně to, co hledáte. V případě jakýchkoliv dotazů či speciálních požadavků nás neváhejte kontaktovat prostřednictvím e-mailu, telefonu nebo kontaktního formuláře. Těšíme se na vaši návštěvu a budoucí spolupráci!
-              </p>
-              
-              <div className="text-center mt-12 pt-8 border-t border-stone-200">
-                <p className="text-2xl font-bold text-stone-800">
+              <div className="mt-16 pt-8 border-t border-stone-200">
+                <p className="text-2xl md:text-3xl font-bold text-stone-800 mb-3">
                   Kamenictví Dvořák s.r.o.
                 </p>
-                <p className="text-xl text-stone-600 mt-2">
+                <p className="text-xl md:text-2xl text-stone-600">
                   tradiční řemeslo, moderní přístup, individuální řešení
                 </p>
               </div>

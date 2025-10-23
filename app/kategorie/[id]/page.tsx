@@ -24,12 +24,6 @@ import {
   ShoppingCart
 } from "lucide-react";
 
-// 🔍 Generování statických parametrů pro všechny kategorie
-export async function generateStaticParams() {
-  // TODO: Implementovat načítání všech kategoriích IDs pro static generation
-  return [];
-}
-
 // 🏷️ Stránka kategorie - zobrazuje produkty v kategorii
 export default function StrankaKategorie({ params }: { params: { id: string } }) {
   const kategorie = získatKategorii(params.id); // 🔎 Načtení kategorie podle ID
@@ -317,3 +311,4 @@ export default function StrankaKategorie({ params }: { params: { id: string } })
     </div>
   );
 }
+
