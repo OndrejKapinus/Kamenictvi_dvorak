@@ -158,7 +158,7 @@ export const kategorie: Kategorie[] = [
         id: "hrbitovni-vazy",
         název: "Hřbitovní vázy",
         popis: "Elegantní vázy pro květiny",
-        obrázek: "https://images.unsplash.com/photo-1603048297172-c92544798d5a?w=800&h=600&fit=crop",
+    obrázek: "https://images.unsplash.com/photo-1603048297172-c92544798d5a?w=800&h=600&fit=crop",
         ikona: "🏺",
         parent: "hrbitovni-doplnky"
       },
@@ -174,7 +174,7 @@ export const kategorie: Kategorie[] = [
         id: "hrbitovni-urny",
         název: "Hřbitovní urny",
         popis: "Důstojné urny z přírodního kamene",
-        obrázek: "https://images.unsplash.com/photo-1594398901394-4e34939a4fd0?w=800&h=600&fit=crop",
+    obrázek: "https://images.unsplash.com/photo-1594398901394-4e34939a4fd0?w=800&h=600&fit=crop",
         ikona: "⚱️",
         parent: "hrbitovni-doplnky"
       },
@@ -301,7 +301,7 @@ export const produkty: Produkt[] = [
   },
   // 🌈 Barevné kamenné drti  
   {
-    id: "2", 
+    id: "2",
     název: "Barevná graniulová drť - červená",
     cena: 890,
     popis: "Dekorativní barevná drť z granitového kamene v červené barvě. Ideální pro zahradní cesty, okolo staveb či jako dekorativní prvek. Balení 25 kg.",

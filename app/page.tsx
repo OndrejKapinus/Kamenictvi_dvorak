@@ -93,10 +93,6 @@ export default function HomePage() {
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     
-                    {/* 🎨 Ikona kategorie v rohu */}
-                    <div className="absolute top-3 right-3 bg-gradient-to-r from-slate-700 to-slate-800 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl shadow-lg">
-                      {kat.ikona}
-                    </div>
                     
                     {/* 🌟 Badge počtu podkategorií */}
                     {kat.children && kat.children.length > 0 && (
@@ -156,12 +152,15 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* 🎉 Statistiky */}
+          {/* 🎉 Tlačítko na celý sortiment */}
           <div className="text-center mt-16">
-            <div className="inline-flex items-center gap-4 bg-gradient-to-r from-slate-800 to-slate-700 text-white px-8 py-4 rounded-2xl shadow-xl">
-              <Package className="h-6 w-6" />
-              <span className="font-heading text-lg font-bold">Více než {kategorie.length} specializovaných kategorií</span>
-            </div>
+            <Button size="lg" className="bg-gradient-to-r from-slate-800 to-slate-700 hover:from-slate-700 hover:to-slate-600 text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-lg font-bold px-8 py-4" asChild>
+              <Link href="/sortiment">
+                <Package className="h-6 w-6 mr-3" />
+                Celý sortiment
+                <ArrowRight className="ml-3 h-5 w-5" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

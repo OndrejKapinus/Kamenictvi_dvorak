@@ -324,9 +324,15 @@ export default function DetailProduktu({ params }: { params: { id: string } }) {
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-xl font-bold">
-                        {souvisejícíProdukt.cena.toLocaleString('cs-CZ')} Kč
-                      </p>
+                      {/* Cena vlevo a tlačítko vpravo */}
+                      <div className="flex justify-between items-center">
+                        <div className="text-xl font-bold">
+                          {souvisejícíProdukt.cena.toLocaleString('cs-CZ')} Kč
+                        </div>
+                        <Button variant="outline" size="sm" className="group-hover:bg-slate-800 group-hover:text-white transition-colors duration-300">
+                          Detail
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
                 </Link>

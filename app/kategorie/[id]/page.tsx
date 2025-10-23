@@ -163,7 +163,6 @@ export default function StrankaKategorie({ params }: { params: { id: string } })
                         href={`/kategorie/${podkategorie.id}`}
                         className="flex items-center gap-3 p-3 bg-slate-50 hover:bg-slate-100 rounded-lg transition-colors group"
                       >
-                        <span className="text-lg">{podkategorie.ikona}</span>
                         <div className="flex-1">
                           <p className="font-medium text-slate-900 group-hover:text-slate-700">
                             {podkategorie.název}
@@ -277,28 +276,23 @@ export default function StrankaKategorie({ params }: { params: { id: string } })
                     </div>
                     
                     <CardHeader className="p-6">
-                      <div className="flex justify-between items-start mb-3">
-                        <CardTitle className="group-hover:text-slate-600 transition-colors duration-300 line-clamp-2 text-lg font-heading flex-1">
-                          {produkt.název}
-                        </CardTitle>
-                        {/* 💰 Cena */}
-                        <div className="ml-4 flex-shrink-0">
-                          <div className="bg-slate-100 px-3 py-1 rounded-lg border">
-                            <p className="text-slate-800 text-lg font-heading font-bold">
-                              {produkt.cena.toLocaleString('cs-CZ')} Kč
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                      <CardTitle className="group-hover:text-slate-600 transition-colors duration-300 line-clamp-2 text-lg font-heading mb-3">
+                        {produkt.název}
+                      </CardTitle>
                       
                       <CardDescription className="line-clamp-3 text-slate-600 leading-relaxed mb-4">
                         {produkt.popis}
                       </CardDescription>
                       
-                      {/* 🎯 Call to action */}
-                      <div className="pt-2 flex items-center text-slate-800 font-semibold group-hover:text-slate-600 transition-colors duration-300">
-                        <span>Zobrazit detail</span>
-                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      {/* Cena vlevo a tlačítko vpravo */}
+                      <div className="flex justify-between items-center pt-2">
+                        <div className="text-2xl font-bold text-slate-800">
+                          {produkt.cena.toLocaleString('cs-CZ')} Kč
+                        </div>
+                        <Button variant="outline" size="sm" className="group-hover:bg-slate-800 group-hover:text-white transition-colors duration-300">
+                          Zobrazit detail
+                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                        </Button>
                       </div>
                     </CardHeader>
                   </Card>
