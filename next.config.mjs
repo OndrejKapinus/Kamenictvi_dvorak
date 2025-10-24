@@ -2,7 +2,6 @@
 const nextConfig = {
   // 🚀 Nastavení pro Render deployment
   distDir: 'build', // 📁 Výstup do 'build' složky pro Render
-  trailingSlash: true,
   images: {
     // 🖼️ Povolené domény pro externí obrázky
     remotePatterns: [
