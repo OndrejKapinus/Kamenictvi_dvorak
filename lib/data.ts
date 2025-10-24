@@ -287,7 +287,7 @@ export const kategorie: Kategorie[] = [
 export const produkty: Produkt[] = [
   // 🎨 Atypické výrobky
   {
-    id: "1",
+    id: "atypicka-zulova-deska-na-zakazku",
     název: "Atypická žulová deska na zakázku",
     cena: 15900,
     popis: "Atypická deska z žuly dle vašich rozměrů a požadavků. Možnost různých tvarů, výřezů a povrchových úprav. Ideální pro netradičí použití.",
@@ -301,7 +301,7 @@ export const produkty: Produkt[] = [
   },
   // 🌈 Barevné kamenné drti  
   {
-    id: "2",
+    id: "barevna-granulova-drt-cervena",
     název: "Barevná graniulová drť - červená",
     cena: 890,
     popis: "Dekorativní barevná drť z granitového kamene v červené barvě. Ideální pro zahradní cesty, okolo staveb či jako dekorativní prvek. Balení 25 kg.",
@@ -314,7 +314,7 @@ export const produkty: Produkt[] = [
   },
   // 🔨 Kamenné paličky na maso
   {
-    id: "3",
+    id: "zulova-palicka-na-maso-premium",
     název: "Žulová palička na maso Premium",
     cena: 1290,
     popis: "Ručně vyráběná palička na maso z tvrdé žuly. Ergonomická rukojeť, hygienický povrch. Rozměry: 25x8x5 cm. Ideální pro tenderování všech druhů masa.",
@@ -327,7 +327,7 @@ export const produkty: Produkt[] = [
   },
   // 🍞 Kamenné válečky na těsto
   {
-    id: "4",
+    id: "mramorovy-valecek-na-testo",
     název: "Mramorový váleček na těsto",
     cena: 1890,
     popis: "Tradiční váleček na těsto z bílého mramoru. Udržuje ideální teplotu pro kynuté těsto. Rozměry: 40x8 cm. Bezpečný a hygienický.",
@@ -340,7 +340,7 @@ export const produkty: Produkt[] = [
   },
   // 🌿 Kamenné hmoždíře
   {
-    id: "5",
+    id: "zulovy-hmozdyr-s-palici",
     název: "Žulový hmoždíř s palicí",
     cena: 2490,
     popis: "Masivní hmoždíř z černé žuly včetně palic. Průměr 15 cm, výška 8 cm. Ideální pro mletí koření, bylinek a ořechů. Velmi odolný a hygienický.",
@@ -353,7 +353,7 @@ export const produkty: Produkt[] = [
   },
   // 🔥 Grilovací kameny hladké
   {
-    id: "6",
+    id: "grilovaci-kamen-hladky-zula",
     název: "Grilovací kámen hladký - žula",
     cena: 3200,
     popis: "Hladký grilovací kámen z žuly. Rozměry: 40x30x2 cm. Rovnoměrně distribuuje teplo, snadné čištění. Ideální pro grilování masa, ryb i zeleniny.",
@@ -366,7 +366,7 @@ export const produkty: Produkt[] = [
   },
   // 🏺 Hřbitovní vázy
   {
-    id: "7",
+    id: "mramorova-vaza-na-hrob-classic",
     název: "Mramorová váza na hrob - Classic",
     cena: 2890,
     popis: "Nádherná váza z bílého carrarského mramoru. Ideální pro umístění čerstvých nebo umělých květin na hrobě. Rozměry: 25x15x15 cm. Odolná konstrukce zajišťuje dlouhou životnost.",
@@ -379,7 +379,7 @@ export const produkty: Produkt[] = [
   },
   // ⚱️ Hřbitovní urny
   {
-    id: "8",
+    id: "zulova-urna-pro-popel",
     název: "Žulová urna pro popel",
     cena: 12500,
     popis: "Důstojná urna z leštěné žuly. Rozměry: 30x30x30 cm. Vhodná pro standardní urny. Možnost personalizace textem nebo symbolem. Vodotěsné uzavření.",
@@ -392,7 +392,7 @@ export const produkty: Produkt[] = [
   },
   // 🧱 Štípané kamenné obklady
   {
-    id: "9",
+    id: "stipany-obklad-piskovcovy",
     název: "Štípaný obklad - pískovcový",
     cena: 890,
     popis: "Přírodní štípaný obklad z pískovce s rustikálním vzhledem. Rozměry: 30x10x2 cm. Ideální pro interiér i exteriér. Mrazuvzdorný. Cena za kus.",
@@ -405,7 +405,7 @@ export const produkty: Produkt[] = [
   },
   // 🐾 Zvířecí náhrobky s obrázkem
   {
-    id: "10",
+    id: "zulovy-nahrobek-pro-psa-s-fotkou",
     název: "Žulový náhrobek pro psa s fotkou",
     cena: 4500,
     popis: "Personalizovaný náhrobek pro zvířátka s možností aplikace fotografie. Rozměry: 30x20x5 cm. Gravírování jména a let. Odolný proti povětrnosti.",
@@ -418,7 +418,7 @@ export const produkty: Produkt[] = [
   },
   // 🌿 Kamenné truhlíky
   {
-    id: "11",
+    id: "zulovy-zahradni-truhlik",
     název: "Žulový zahradní truhlík",
     cena: 8900,
     popis: "Elegantní truhlík z žuly pro venkovní i vnitřní použití. Rozměry: 80x30x25 cm. Drenážní otvory, odolný proti mrazu. Ideální pro květiny a byliny.",
@@ -431,7 +431,7 @@ export const produkty: Produkt[] = [
   },
   // 🎁 Dárkové předměty 
   {
-    id: "12",
+    id: "zulove-podlozky-pod-sklenice-sada",
     název: "Žulové podložky pod sklenice - sada",
     cena: 650,
     popis: "Elegantní sada 6 podložek pod nápoje z přírodní žuly. Rozměry každé: 10x10x0.5 cm. Praktický a stylový dárek. Chrání nábytek před vlhkostí a teplem.",

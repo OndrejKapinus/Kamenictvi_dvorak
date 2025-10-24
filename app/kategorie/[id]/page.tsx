@@ -1,57 +1,48 @@
-"use client"; // 🔧 Komponenta s interaktivitou pro filtry
-
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { useState } from "react"; // 🎛️ Pro stav filtrů
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
   získatKategorii, 
   získatProduktyPodleKategorie, 
   získatRodičovskouKategorii,
-  produkty 
+  kategorie
 } from "@/lib/data";
+import { FiltryKategorie } from "@/components/FiltryKategorie";
 import { 
   CheckCircle2, 
-  XCircle, 
   ArrowLeft, 
   Package, 
   Grid, 
-  Filter,
-  ArrowRight,
-  ShoppingCart
+  ArrowRight
 } from "lucide-react";
 
-// 🏷️ Stránka kategorie - zobrazuje produkty v kategorii
+// 🎯 Generování statických parametrů pro všechny kategorie
+export async function generateStaticParams() {
+  const všechnyKategorie: { id: string }[] = []; // 📋 Pole všech ID kategorií
+  
+  // 🔄 Procházíme hlavní kategorie i podkategorie
+  kategorie.forEach((kat) => {
+    všechnyKategorie.push({ id: kat.id }); // ➕ Přidáme hlavní kategorii
+    
+    if (kat.children) { // 👶 Pokud má podkategorie
+      kat.children.forEach((podkat) => {
+        všechnyKategorie.push({ id: podkat.id }); // ➕ Přidáme podkategorii
+      });
+    }
+  });
+  
+  return všechnyKategorie; // 🎁 Vrátíme všechny kategorie pro statické vygenerování
+}
+
+// 🏷️ Stránka kategorie - zobrazuje produkty v kategorii (statická stránka)
 export default function StrankaKategorie({ params }: { params: { id: string } }) {
-  const kategorie = získatKategorii(params.id); // 🔎 Načtení kategorie podle ID
+  const kategorieDetail = získatKategorii(params.id); // 🔎 Načtení kategorie podle ID
   const produktyKategorie = získatProduktyPodleKategorie(params.id); // 📦 Produkty kategorie
   const rodičovskáKategorie = získatRodičovskouKategorii(params.id); // 👆 Rodič pro breadcrumbs
-  
-  // 🎯 Stavy pro filtry
-  const [jenSkladem, nastavJenSkladem] = useState(false); // Filtr pouze produkty skladem
-  const [řazeníPodleCeny, nastavŘazeníPodleCeny] = useState<'asc' | 'desc' | null>(null); // Řazení podle ceny
 
   // ❌ Pokud kategorie neexistuje, zobrazíme 404
-  if (!kategorie) {
+  if (!kategorieDetail) {
     notFound();
-  }
-
-  // 🔧 Filtrování a řazení produktů
-  let filtrovanéProdukty = [...produktyKategorie];
-  
-  // 📦 Filtr skladem
-  if (jenSkladem) {
-    filtrovanéProdukty = filtrovanéProdukty.filter(p => p.naSkladě);
-  }
-  
-  // 💰 Řazení podle ceny
-  if (řazeníPodleCeny === 'asc') {
-    filtrovanéProdukty.sort((a, b) => a.cena - b.cena);
-  } else if (řazeníPodleCeny === 'desc') {
-    filtrovanéProdukty.sort((a, b) => b.cena - a.cena);
   }
 
   // 📊 Statistiky
@@ -80,7 +71,7 @@ export default function StrankaKategorie({ params }: { params: { id: string } })
                 <span>/</span>
               </>
             )}
-            <span className="text-foreground font-medium">{kategorie.název}</span>
+            <span className="text-foreground font-medium">{kategorieDetail.název}</span>
           </nav>
         </div>
       </div>
@@ -97,14 +88,14 @@ export default function StrankaKategorie({ params }: { params: { id: string } })
             {/* 🖼️ Obrázek kategorie */}
             <div className="relative h-80 overflow-hidden rounded-2xl bg-white shadow-xl">
               <Image
-                src={kategorie.obrázek}
-                alt={kategorie.název}
+                src={kategorieDetail.obrázek}
+                alt={kategorieDetail.název}
                 fill
                 className="object-cover"
                 priority
               />
               <div className="absolute top-4 right-4 bg-gradient-to-r from-slate-700 to-slate-800 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg">
-                {kategorie.ikona}
+                {kategorieDetail.ikona}
               </div>
             </div>
 
@@ -112,10 +103,10 @@ export default function StrankaKategorie({ params }: { params: { id: string } })
             <div className="lg:col-span-2 space-y-6">
               <div>
                 <h1 className="text-4xl md:text-5xl font-heading font-bold text-slate-900 mb-4">
-                  {kategorie.název}
+                  {kategorieDetail.název}
                 </h1>
                 <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-6">
-                  {kategorie.popis}
+                  {kategorieDetail.popis}
                 </p>
               </div>
 
@@ -150,14 +141,14 @@ export default function StrankaKategorie({ params }: { params: { id: string } })
               </div>
 
               {/* 📋 Podkategorie (pokud existují) */}
-              {kategorie.children && kategorie.children.length > 0 && (
+              {kategorieDetail.children && kategorieDetail.children.length > 0 && (
                 <div className="bg-white p-6 rounded-xl shadow-md border">
                   <h3 className="text-lg font-semibold text-slate-900 mb-4 flex items-center gap-2">
                     <Grid className="h-4 w-4" />
                     Podkategorie
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {kategorie.children.map((podkategorie) => (
+                    {kategorieDetail.children.map((podkategorie) => (
                       <Link 
                         key={podkategorie.id} 
                         href={`/kategorie/${podkategorie.id}`}
@@ -180,128 +171,8 @@ export default function StrankaKategorie({ params }: { params: { id: string } })
         </div>
       </section>
 
-      {/* 🎯 Filtry a řazení */}
-      <section className="py-8 bg-white border-b border-slate-200">
-        <div className="container px-4">
-          <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
-            <div className="flex items-center gap-3">
-              <Filter className="h-5 w-5 text-slate-600" />
-              <h3 className="text-lg font-semibold text-slate-900">
-                Produkty ({filtrovanéProdukty.length} z {produktyKategorie.length})
-              </h3>
-            </div>
-            
-            <div className="flex flex-wrap gap-4 items-center">
-              {/* 📦 Filtr skladem */}
-              <Button
-                variant={jenSkladem ? "default" : "outline"}
-                size="sm"
-                onClick={() => nastavJenSkladem(!jenSkladem)}
-                className="gap-2"
-              >
-                <CheckCircle2 className="h-4 w-4" />
-                Jen skladem ({početNaSkladě})
-              </Button>
-              
-              {/* 💰 Řazení podle ceny */}
-              <div className="flex gap-2">
-                <Button
-                  variant={řazeníPodleCeny === 'asc' ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => nastavŘazeníPodleCeny(řazeníPodleCeny === 'asc' ? null : 'asc')}
-                >
-                  Cena ↑
-                </Button>
-                <Button
-                  variant={řazeníPodleCeny === 'desc' ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => nastavŘazeníPodleCeny(řazeníPodleCeny === 'desc' ? null : 'desc')}
-                >
-                  Cena ↓
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 🛍️ Seznam produktů */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-        {/* 🎨 Dekorativní pozadí */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-40 left-20 w-64 h-64 bg-slate-300 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-40 right-20 w-80 h-80 bg-slate-400 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="container px-4 relative z-10">
-          {filtrovanéProdukty.length === 0 ? (
-            // 😞 Žádné produkty
-            <div className="text-center py-16">
-              <div className="mx-auto w-32 h-32 bg-slate-200 rounded-full flex items-center justify-center mb-6">
-                <Package className="h-16 w-16 text-slate-400" />
-              </div>
-              <h3 className="text-2xl font-semibold text-slate-900 mb-4">Žádné produkty nenalezeny</h3>
-              <p className="text-lg text-slate-600 mb-6">
-                {jenSkladem 
-                  ? "V této kategorii momentálně nejsou žádné produkty skladem."
-                  : "V této kategorii zatím nejsou žádné produkty."
-                }
-              </p>
-              <Button onClick={() => nastavJenSkladem(false)} variant="outline">
-                Zobrazit všechny produkty
-              </Button>
-            </div>
-          ) : (
-            // 🛍️ Grid produktů
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {filtrovanéProdukty.map((produkt, index) => (
-                <Link key={produkt.id} href={`/produkt/${produkt.id}`} className="group">
-                  <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 h-full border border-slate-200 bg-white/90 backdrop-blur-sm group-hover:bg-white transform group-hover:-translate-y-3 group-hover:border-slate-300">
-                    <div className="relative h-72 overflow-hidden">
-                      <Image
-                        src={produkt.obrázky[0]}
-                        alt={produkt.název}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
-                      
-                      {/* 🌟 Skladem badge */}
-                      {produkt.naSkladě && (
-                        <div className="absolute top-3 right-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
-                          <CheckCircle2 className="h-3 w-3" />
-                          Skladem
-                        </div>
-                      )}
-                      
-                    </div>
-                    
-                    <CardHeader className="p-6">
-                      <CardTitle className="group-hover:text-slate-600 transition-colors duration-300 line-clamp-2 text-lg font-heading mb-3">
-                        {produkt.název}
-                      </CardTitle>
-                      
-                      <CardDescription className="line-clamp-3 text-slate-600 leading-relaxed mb-4">
-                        {produkt.popis}
-                      </CardDescription>
-                      
-                      {/* Cena vlevo a tlačítko vpravo */}
-                      <div className="flex justify-between items-center pt-2">
-                        <div className="text-2xl font-bold text-slate-800">
-                          {produkt.cena.toLocaleString('cs-CZ')} Kč
-                        </div>
-                        <Button variant="outline" size="sm" className="group-hover:bg-slate-800 group-hover:text-white transition-colors duration-300">
-                          Zobrazit detail
-                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                        </Button>
-                      </div>
-                    </CardHeader>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
+      {/* 🎯 Filtry a seznam produktů */}
+      <FiltryKategorie produkty={produktyKategorie} početNaSkladě={početNaSkladě} />
     </div>
   );
 }

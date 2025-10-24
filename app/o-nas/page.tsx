@@ -19,7 +19,7 @@ export default function ONásPage() {
   return (
     <div className="flex flex-col">
       {/* Breadcrumbs navigace */}
-      <div className="border-b">
+      <div className="border-b bg-white">
         <div className="container px-4 py-4">
           <nav className="flex items-center space-x-2 text-sm text-muted-foreground">
             <Link href="/" className="hover:text-foreground transition-colors">
@@ -33,11 +33,11 @@ export default function ONásPage() {
 
       {/* Hero sekce s fotografií */}
       <section 
-        className="relative bg-gradient-to-br from-stone-50 via-slate-100 to-stone-100 py-20 md:py-32 overflow-hidden"
+        className="relative py-28 md:py-40 overflow-hidden"
         style={{
           backgroundImage: `url('/eder-pozo-perez-HEIZkJYUPeo-unsplash.jpg')`, 
           backgroundSize: 'cover', 
-          backgroundPosition: 'center center', 
+          backgroundPosition: 'center top', 
           backgroundAttachment: 'fixed',
         }}
       >
